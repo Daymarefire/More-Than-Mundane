@@ -13,6 +13,10 @@ public class Command {
 		{
 			ScriptCommand.readPassSpec("help", secondaryWords(string));
 		}
+		else
+		{
+			Text.print("What?");
+		}
 	}
 	
 	private static boolean containsSpace(String string)//Returns true for strings with a space and false otherwise
@@ -38,6 +42,15 @@ public class Command {
 		if (string.contains(" "))
 		{
 			return string.substring(string.indexOf(' ')+1);
+		}
+		return string;
+	}
+	
+	private static String finalWord(String string)//Returns the final word of the string
+	{
+		if (string.contains(" "))
+		{
+			return string.substring(string.lastIndexOf(' ')+1);
 		}
 		return string;
 	}

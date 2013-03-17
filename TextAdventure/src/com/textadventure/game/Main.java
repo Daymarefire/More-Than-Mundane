@@ -4,7 +4,7 @@ public class Main {
 	
 	public static void main(String[] args) 
 	{
-		ScriptDOD.readPass(0);
+		ScriptAreaDOD.readPass(0);
 		Command.recieve();
 	}
 
