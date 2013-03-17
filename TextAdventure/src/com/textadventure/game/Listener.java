@@ -1,5 +1,5 @@
 package com.textadventure.game;
-
+//Receives input from the player, used only through Command or special scripts unless simply waiting to continue
 import java.util.Scanner;
 
 public class Listener {

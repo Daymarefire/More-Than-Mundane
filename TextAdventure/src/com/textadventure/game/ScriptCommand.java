@@ -1,18 +1,23 @@
 package com.textadventure.game;
-
-public class ScriptCommand extends ScriptBase{
+//Script connected to the Command class
+public class ScriptCommand extends Script{
 	
 	@SuppressWarnings("unused")
 	private String ScriptName = "Command";
 
-	public static void readPass(int x)
+	public static void readPass(int PassageID)
 	{
-		if (x==0)
+		if (PassageID==0)
 		{
 			Text.print(Help00);
 		}
 	}
 	
+	public static void readPassSpec(String PassageType, String Argument)
+	{
+		
+	}
+
 	private static String Help00 = "help: Brings up this list of commands."+Text.lineBreak()+
 					"help *command*: Tells more about the action."+Text.lineBreak()+
 					"attack *creature*: Enters comabt with a creature, or attacks if you are already in combat."+Text.lineBreak()+

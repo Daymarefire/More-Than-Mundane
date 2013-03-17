@@ -1,5 +1,5 @@
 package com.textadventure.game;
-
+//handler for debugging error reports, insert every time there is a potential for a loop breaking bug
 public class Error {
 
 	public static void report(int error)
