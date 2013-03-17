@@ -6,9 +6,10 @@ public class Listener {
 	private static String string;
 	public static String fetch()
 	{
-		Scanner scan = new Scanner(System.in);
+		
 		try
 		{
+			Scanner scan = new Scanner(System.in);
 			string = scan.nextLine();
 			scan.close();
 			return string;

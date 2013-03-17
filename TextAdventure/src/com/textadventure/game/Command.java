@@ -5,7 +5,7 @@ public class Command {
 	public static void recieve()
 	{
 		String string = Listener.fetch().toLowerCase();
-		if (string=="help")
+		if (string.equals("help"))
 		{
 			ScriptCommand.readPass(0);
 		}
