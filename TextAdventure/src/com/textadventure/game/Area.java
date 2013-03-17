@@ -1,8 +1,14 @@
 package com.textadventure.game;
 //Abstract Class for all Areas
-public abstract class Area {
+public class Area {
 	
-	public abstract void initializeArea();
-	public abstract void enterArea(String AreaDiscription);
+	public String Name;
+	public String Description;
+	public String DetailedDescription;
+	
+	public void initializeAreaRandomized(EnumArea area)
+	{
+		
+	}
 	
 }

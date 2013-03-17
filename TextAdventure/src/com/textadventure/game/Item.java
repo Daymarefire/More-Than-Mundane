@@ -1,7 +1,7 @@
 package com.textadventure.game;
 
 public interface Item {
-
+	
 	public String name();
 	public String alternateName();
 	public String description();

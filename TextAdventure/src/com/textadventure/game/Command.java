@@ -46,6 +46,7 @@ public class Command {
 		return string;
 	}
 	
+	@SuppressWarnings("unused")
 	private static String finalWord(String string)//Returns the final word of the string
 	{
 		if (string.contains(" "))
