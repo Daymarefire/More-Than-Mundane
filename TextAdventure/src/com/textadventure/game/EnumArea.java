@@ -16,14 +16,14 @@ public enum EnumArea {
 	
 	EnumArea(String Name, int MaximumNumberOfExits, int MaximumNumberOfProps, int PropSetList, int ItemSetList, boolean Exterior, String Description, String DetailedDescription)
 	{
-		Name = n;
-		MaximumNumberOfExits = x;
-		MaximumNumberOfProps = p;
-		PropSetList = s;
-		ItemSetList = i;
-		Exterior = e;
-		Description = d;
-		DetailedDescription = dd;
+		n = Name;
+		x = MaximumNumberOfExits;
+		p = MaximumNumberOfProps;
+		s = PropSetList;
+		i = ItemSetList;
+		e = Exterior;
+		d = Description;
+		dd = DetailedDescription;
 	}
 	
 	String getName()
