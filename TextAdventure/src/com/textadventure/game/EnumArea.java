@@ -14,15 +14,55 @@ public enum EnumArea {
 	private String d;
 	private String dd;
 	
-	EnumArea(String Name, int MaximumNumberOfExits, int MaximumNumberOfProps, int PropListSet, int ItemListSet, boolean Exterior, String Description, String DetailedDescription)
+	EnumArea(String Name, int MaximumNumberOfExits, int MaximumNumberOfProps, int PropSetList, int ItemSetList, boolean Exterior, String Description, String DetailedDescription)
 	{
 		Name = n;
 		MaximumNumberOfExits = x;
 		MaximumNumberOfProps = p;
-		PropListSet = s;
-		ItemListSet = i;
+		PropSetList = s;
+		ItemSetList = i;
 		Exterior = e;
 		Description = d;
 		DetailedDescription = dd;
+	}
+	
+	String getName()
+	{
+		return n;
+	}
+	
+	int getMaximumNumberOfExits()
+	{
+		return x;
+	}
+	
+	int getMaximumNumberOfProps()
+	{
+		return p;
+	}
+	
+	int getPropList()
+	{
+		return s;
+	}
+	
+	int getItemList()
+	{
+		return i;
+	}
+	
+	boolean isExterior()
+	{
+		return e;
+	}
+	
+	String getDescription()
+	{
+		return d;
+	}
+	
+	String getDetailedDescription()
+	{
+		return dd;
 	}
 }

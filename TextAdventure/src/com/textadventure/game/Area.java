@@ -11,4 +11,8 @@ public class Area {
 		
 	}
 	
+	public void initializeArea(EnumArea area)
+	{
+		
+	}
 }
