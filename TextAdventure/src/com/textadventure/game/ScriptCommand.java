@@ -1,8 +1,9 @@
 package com.textadventure.game;
 //Script connected to the Command class
-public class ScriptCommand extends Script{
+public class ScriptCommand{
 	
-	public String getName() {
+	public String getName() 
+	{
 		return "Command";
 	}
 	public static void readPass(int PassageID)
