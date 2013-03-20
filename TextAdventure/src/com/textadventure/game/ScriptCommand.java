@@ -10,7 +10,7 @@ public class ScriptCommand{
 	{
 		if (PassageID==0)
 		{
-			Text.print(Help00);
+			Text.printNew(Help00);
 		}
 	}
 	

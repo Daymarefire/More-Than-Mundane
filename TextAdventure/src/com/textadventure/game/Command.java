@@ -15,7 +15,7 @@ public class Command {
 		}
 		else
 		{
-			Text.print("What?");
+			Text.printNew("What?");
 		}
 	}
 	
