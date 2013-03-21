@@ -3,7 +3,6 @@ package com.morethan.mundane;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 
 public class Area {
@@ -26,12 +25,22 @@ public class Area {
 		}
 	}
 	
-	public void addPropToArea(EnumProp propEnum, boolean isRandomizedProp)
+	public void addPropToArea(EnumProp propEnum)
 	{
 		if(PropsInArea<Area.getMaximumNumberOfProps())
 		{
-			Prop prop = new Prop(propEnum, isRandomizedProp, Area.getItemList());
-			PropMap.put(prop.Prop.getName()+PropsInArea, prop);
+			Prop prop = new Prop(propEnum);
+			PropMap.put(prop.Prop.getID()+PropsInArea, prop);
+		}
+		else{}
+	}
+	
+	public void addItemToProp(Prop prop, EnumItem itemEnum)
+	{
+		if(prop.Prop.getVolumeCapacity()<prop.CurrentFilledVolume+itemEnum.getVolume()&&prop.Prop.getWeightCapacity()<prop.CurrentFilledWeight+itemEnum.getWeight())
+		{
+			Item item = new Item(itemEnum);
+			prop.ItemMap.put(item.Item.getName(), item);
 		}
 		else{}
 	}

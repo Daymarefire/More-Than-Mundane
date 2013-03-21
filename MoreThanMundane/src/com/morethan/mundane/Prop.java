@@ -1,19 +1,17 @@
 package com.morethan.mundane;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Prop {
 	
+	Double CurrentFilledVolume;
+	Double CurrentFilledWeight;
 	EnumProp Prop;
+	Map<String, Item> ItemMap = new HashMap<String, Item>();
 
-	public Prop(EnumProp prop, boolean isRandomized, int itemSetListFromArea)
+	public Prop(EnumProp prop)
 	{
-		if(!isRandomized)
-		{
 			Prop = prop;
-		}
-		else
-		{
-			
-		}
 	}
-	
 }

@@ -2,8 +2,9 @@ package com.morethan.mundane;
 
 public enum EnumProp {
 
-	WOODEN_TABLE("Wooden Table", "Wood Table", "Table", " a ", true, true, (Boolean) null, 10, 10, "");
+	WOODEN_TABLE("WOOD_TBL", "Wooden Table", "Wood Table", "Table", " a ", true, true, (Boolean) null, 10d, 10d, "");
 	
+	private String id;
 	private String n1;
 	private String n2;
 	private String n3;
@@ -11,12 +12,13 @@ public enum EnumProp {
 	private boolean c;
 	private boolean t;
 	private boolean o;
-	private int v;
-	private int w;
+	private Double v;
+	private Double w;
 	private String d;
 	
-	EnumProp(String Name, String AlternateName, String AlternateName2, String IndefiniteArticle, boolean Container, boolean TransparentContainer, boolean Open, int VolumeCapacity, int WeightCapacity, String Description) {
+	EnumProp(String ID, String Name, String AlternateName, String AlternateName2, String IndefiniteArticle, boolean Container, boolean TransparentContainer, boolean Open, Double VolumeCapacity, Double WeightCapacity, String Description) {
 		
+		id = ID;
 		n1 = Name;
 		n2 = AlternateName;
 		n3 = AlternateName2;
@@ -28,6 +30,11 @@ public enum EnumProp {
 		w = WeightCapacity;
 		d = Description;
 		
+	}
+	
+	String getID()
+	{
+		return id;
 	}
 	
 	String getName()
@@ -65,12 +72,12 @@ public enum EnumProp {
 		return o;
 	}
 	
-	int getVolumeCapacity()
+	Double getVolumeCapacity()
 	{
 		return v;
 	}
 	
-	int getWeightCapacity()
+	Double getWeightCapacity()
 	{
 		return w;
 	}
