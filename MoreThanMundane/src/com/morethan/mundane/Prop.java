@@ -7,6 +7,7 @@ public class Prop {
 	
 	Double CurrentFilledVolume;
 	Double CurrentFilledWeight;
+	int NumberOfItemsThroughProp = 0;
 	EnumProp Prop;
 	Map<String, Item> ItemMap = new HashMap<String, Item>();
 

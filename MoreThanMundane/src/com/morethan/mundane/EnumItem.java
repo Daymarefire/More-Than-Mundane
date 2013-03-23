@@ -2,20 +2,27 @@ package com.morethan.mundane;
 
 public enum EnumItem {
 
-	STICK("Stick", 1d, 1d, "");
+	STICK("STK","Stick", 1d, 1d, "");
 	
+	String id;
 	String n;
 	Double v;
 	Double w;
 	String d;
 	
-	EnumItem(String Name, Double Volume, Double Weight, String Description) {
+	EnumItem(String ID, String Name, Double Volume, Double Weight, String Description) {
 		
+		id = ID;
 		n = Name;
 		v = Volume;
 		w = Weight;
 		d = Description;
 		
+	}
+	
+	String getID()
+	{
+		return id;
 	}
 	
 	String getName()

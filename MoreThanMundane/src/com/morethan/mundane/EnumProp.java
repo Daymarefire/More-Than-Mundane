@@ -2,7 +2,10 @@ package com.morethan.mundane;
 
 public enum EnumProp {
 
-	WOODEN_TABLE("WOOD_TBL", "Wooden Table", "Wood Table", "Table", " a ", true, true, (Boolean) null, 10d, 10d, "");
+	CHEST_WOODEN("CHEST_WOOD", "Wooden Chest", "Chest", "Box", " a ", true, false, false, 10d, 10d, ""),
+	TORTURE_RACK("TORTURE_RACK1", "Torture Rack", "Torture Device", "Rack", " a ", false, false, false, 0d, 0d, ""),
+	WALL_CHAINS("WALL_CHAIN", "Chains on the Wall", "Chain", "Wall Chain", " some ", false, false, false, 0d, 0d, ""),
+	TABLE_WOODEN("TABLE_WOOD", "Wooden Table", "Wood Table", "Table", " a ", true, true, true, 10d, 10d, "");
 	
 	private String id;
 	private String n1;
