@@ -18,7 +18,6 @@ public class PlayerSkills {
 	
 	public int getSkillLevel(int skill)
 	{
-		
 		return skill;
 	}
 	

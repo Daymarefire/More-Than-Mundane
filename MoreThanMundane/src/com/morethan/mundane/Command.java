@@ -1,4 +1,7 @@
 package com.morethan.mundane;
+
+import java.util.Iterator;
+
 //Class that handles non-special script input from the player
 public class Command {
 
@@ -12,6 +15,26 @@ public class Command {
 		else if (firstWord(string).equals("help")&&containsSpace(string))
 		{
 			ScriptCommand.readPassSpec("help", secondaryWords(string));
+		}
+		else if ((firstWord(string).equals("move")||firstWord(string).equals("go"))&&containsSpace(string))
+		{
+			if (!World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ].ExitMap.isEmpty())
+			{
+				Area area = World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ];
+				Iterator<String> KeyIterator = area.ExitMap.keySet().iterator();
+				String CurrentIteration;
+				for (int x = 0; x<area.ExitsInArea-1&&KeyIterator.hasNext(); x++)
+				{
+					CurrentIteration = (String) KeyIterator.next();
+					if (area.ExitMap.get(CurrentIteration).exit.getName().equals(secondaryWords(string))||area.ExitMap.get(CurrentIteration).exit.getName().equals(secondaryWords(secondaryWords(string))))
+					{
+						Player.PlayerLocationX = area.ExitMap.get(CurrentIteration).ExitTargetX;
+						Player.PlayerLocationY = area.ExitMap.get(CurrentIteration).ExitTargetY;
+						Player.PlayerLocationZ = area.ExitMap.get(CurrentIteration).ExitTargetZ;
+						World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ].enterArea();
+					}
+				}
+			}
 		}
 		else
 		{

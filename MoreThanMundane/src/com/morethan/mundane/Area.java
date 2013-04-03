@@ -9,9 +9,11 @@ public class Area {
 	
 	private String DescribeProps;
 	int PropsInArea = 0;
+	int ExitsInArea = 0;
 	int NumberOfPropsThroughArea = 0;
 	EnumArea Area;
 	Prop prop;
+	Map<String, Exit> ExitMap = new HashMap<String, Exit>();
 	Map<String, Prop> PropMap = new HashMap<String, Prop>();
 	
 	public Area(EnumArea area)
@@ -27,6 +29,18 @@ public class Area {
 			PropMap.put(prop.Prop.getID()+NumberOfPropsThroughArea, prop);
 			NumberOfPropsThroughArea++;
 			PropsInArea++;
+			return true;
+		}
+		else{return false;}
+	}
+	
+	public boolean addExitToArea(EnumExit exitEnum, int x, int y, int z)
+	{
+		if(PropsInArea<Area.getMaximumNumberOfProps())
+		{
+			Exit exit = new Exit(exitEnum, x, y, z);
+			ExitMap.put(exit.Name+ExitsInArea, exit);
+			ExitsInArea++;
 			return true;
 		}
 		else{return false;}
