@@ -1,13 +1,11 @@
 package com.morethan.mundane;
 
-public class Player {
+public class Player extends Creature{
 
-	static int PlayerLocationX = 0;
-	static int PlayerLocationY = 0;
-	static int PlayerLocationZ = 0;
-	
 	public Player()
 	{
+		CreatureLocationX = 0;
+		CreatureLocationY = 0;
 		PlayerSkills skills = new PlayerSkills();
 	}
 	

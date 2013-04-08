@@ -34,11 +34,11 @@ public class Area {
 		else{return false;}
 	}
 	
-	public boolean addExitToArea(EnumExit exitEnum, int x, int y, int z)
+	public boolean addExitToArea(EnumExit exitEnum, int x, int y)
 	{
 		if(PropsInArea<Area.getMaximumNumberOfProps())
 		{
-			Exit exit = new Exit(exitEnum, x, y, z);
+			Exit exit = new Exit(exitEnum, x, y);
 			ExitMap.put(exit.Name+ExitsInArea, exit);
 			ExitsInArea++;
 			return true;

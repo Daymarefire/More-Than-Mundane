@@ -3,30 +3,60 @@ package com.morethan.mundane;
 public class Exit {
 
 	String Name;
+	String Article;
+	String Description;
 	EnumExit exit;
 	int ExitTargetX;
 	int ExitTargetY;
-	int ExitTargetZ;
+	boolean Custom;
 	
-	public Exit (EnumExit exit, int x, int y, int z)
+	public Exit (EnumExit exit, int x, int y)
 	{
 		Name = exit.getName();
-		this.exit=exit;
+		Article = exit.getArticle();
+		Description = exit.getDescription();
 		ExitTargetX = x;
 		ExitTargetY = y;
-		ExitTargetZ = z;
+		Custom = false;
 	}
 	
-	public Exit (String name, EnumExit exit, int x, int y, int z)
+	public Exit (String name, String article, String description, int x, int y)
 	{
 		Name = name;
-		this.exit=exit;
+		Article = article;
+		Description = description;
 		ExitTargetX = x;
 		ExitTargetY = y;
-		ExitTargetZ = z;
+		Custom = true;
 	}
 	
-	int getX(){return ExitTargetX;}
-	int getY(){return ExitTargetY;}
-	int getZ(){return ExitTargetZ;}
+	String getName()
+	{
+		return Name;
+	}
+	
+	String getArticle()
+	{
+		return Article;
+	}
+	
+	String getDescription()
+	{
+		return Description;
+	}
+	
+	int getX()
+	{
+		return ExitTargetX;
+	}
+	
+	int getY()
+	{
+		return ExitTargetY;
+	}
+	
+	boolean isCustom()
+	{
+		return Custom;
+	}
 }

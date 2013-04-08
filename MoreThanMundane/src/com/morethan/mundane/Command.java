@@ -18,9 +18,9 @@ public class Command {
 		}
 		else if ((firstWord(string).equals("move")||firstWord(string).equals("go"))&&containsSpace(string))
 		{
-			if (!World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ].ExitMap.isEmpty())
+			if (!World.ExteriorWorld[Player.CreatureLocationX][Player.CreatureLocationY].ExitMap.isEmpty())
 			{
-				Area area = World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ];
+				Area area = World.ExteriorWorld[Player.CreatureLocationX][Player.CreatureLocationY];
 				Iterator<String> KeyIterator = area.ExitMap.keySet().iterator();
 				String CurrentIteration;
 				for (int x = 0; x<area.ExitsInArea-1&&KeyIterator.hasNext(); x++)
@@ -28,10 +28,9 @@ public class Command {
 					CurrentIteration = (String) KeyIterator.next();
 					if (area.ExitMap.get(CurrentIteration).exit.getName().equals(secondaryWords(string))||area.ExitMap.get(CurrentIteration).exit.getName().equals(secondaryWords(secondaryWords(string))))
 					{
-						Player.PlayerLocationX = area.ExitMap.get(CurrentIteration).ExitTargetX;
-						Player.PlayerLocationY = area.ExitMap.get(CurrentIteration).ExitTargetY;
-						Player.PlayerLocationZ = area.ExitMap.get(CurrentIteration).ExitTargetZ;
-						World.ExteriorWorld[Player.PlayerLocationX][Player.PlayerLocationY][Player.PlayerLocationZ].enterArea();
+						Player.CreatureLocationX = area.ExitMap.get(CurrentIteration).ExitTargetX;
+						Player.CreatureLocationY = area.ExitMap.get(CurrentIteration).ExitTargetY;
+						World.ExteriorWorld[Player.CreatureLocationX][Player.CreatureLocationY].enterArea();
 					}
 				}
 			}
