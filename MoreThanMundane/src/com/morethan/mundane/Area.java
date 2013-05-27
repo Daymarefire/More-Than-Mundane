@@ -4,98 +4,154 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-
 public class Area {
+
+	private String listHolder;
+	Area parentArea;
+	EnumArea localArea;
+	Map<Short, Prop> propMap = new HashMap<Short, Prop>();
+	Map<Short, Container> containerMap = new HashMap<Short, Container>();
+	Map<Short, Item> itemMap = new HashMap<Short, Item>();
+	Map<Short, Creature> creatureMap = new HashMap<Short, Creature>();
+	Map<Short, Exit> exitMap = new HashMap<Short, Exit>();
 	
-	private String DescribeProps;
-	int PropsInArea = 0;
-	int ExitsInArea = 0;
-	int NumberOfPropsThroughArea = 0;
-	EnumArea Area;
-	Prop prop;
-	Map<String, Exit> ExitMap = new HashMap<String, Exit>();
-	Map<String, Prop> PropMap = new HashMap<String, Prop>();
-	
-	public Area(EnumArea area)
+	public Area (EnumArea importedArea)
 	{
-			Area = area;
+		localArea = importedArea;
+		parentArea = World.overworld;
+		//AreaMap areaMap = new AreaMap (10,10);
 	}
 	
-	public boolean addPropToArea(EnumProp propEnum)
+	public Area (EnumArea importedArea, Area originArea)
 	{
-		if(PropsInArea<Area.getMaximumNumberOfProps())
-		{
+		localArea = importedArea;
+		parentArea = originArea;
+		//AreaMap areaMap = new AreaMap (10,10);
+	}
+	
+	public boolean createNewPropInArea(EnumProp propEnum)
+	{
 			Prop prop = new Prop(propEnum);
-			PropMap.put(prop.Prop.getID()+NumberOfPropsThroughArea, prop);
-			NumberOfPropsThroughArea++;
-			PropsInArea++;
+			propMap.put(prop.id, prop);
 			return true;
-		}
-		else{return false;}
 	}
 	
-	public boolean addExitToArea(EnumExit exitEnum, int x, int y)
+	public boolean createNewContainerInArea(EnumContainer containerEnum)
 	{
-		if(PropsInArea<Area.getMaximumNumberOfProps())
-		{
-			Exit exit = new Exit(exitEnum, x, y);
-			ExitMap.put(exit.Name+ExitsInArea, exit);
-			ExitsInArea++;
+			Container container = new Container(containerEnum);
+			containerMap.put(container.id, container);
 			return true;
-		}
-		else{return false;}
 	}
-	
-	public boolean addItemToProp(Prop prop, EnumItem itemEnum)
+
+	public boolean createNewItemInArea(EnumItem itemEnum)
 	{
-		if(prop.Prop.getVolumeCapacity()<prop.CurrentFilledVolume+itemEnum.getVolume()&&prop.Prop.getWeightCapacity()<prop.CurrentFilledWeight+itemEnum.getWeight())
-		{
 			Item item = new Item(itemEnum);
-			prop.ItemMap.put(item.Item.getName()+prop.NumberOfItemsThroughProp, item);
-			prop.NumberOfItemsThroughProp++;
-			prop.CurrentFilledVolume = prop.CurrentFilledVolume+item.Item.getVolume();
-			prop.CurrentFilledWeight = prop.CurrentFilledWeight+item.Item.getWeight();
+			itemMap.put(item.id, item);
 			return true;
-		}
-		else{return false;}
+	}
+	
+	public boolean createNewCreatureInArea(EnumCreature creatureEnum)
+	{
+			Creature creature = new Creature(creatureEnum);
+			creatureMap.put(creature.id, creature);
+			return true;
+	}
+	
+	public boolean createNewExitInArea(EnumExit exitEnum, AreaMap areaMap, int x, int y)
+	{
+			Exit exit = new Exit(exitEnum, areaMap, x, y);
+			exitMap.put(exit.id, exit);
+			return true;
+	}
+	
+	public boolean movePropToArea(Prop prop)
+	{
+			propMap.put(prop.id, prop);
+			return true;
+	}
+	
+	public boolean moveContainerToArea(Container container)
+	{
+			containerMap.put(container.id, container);
+			return true;
+	}
+
+	public boolean moveItemToArea(Item item)
+	{
+			itemMap.put(item.id, item);
+			return true;
+	}
+	
+	public boolean moveCreatureToArea(Creature creature)
+	{
+			creatureMap.put(creature.id, creature);
+			return true;
+	}
+	
+	public boolean moveExitToArea(Exit exit)
+	{
+			exitMap.put(exit.id, exit);
+			return true;
 	}
 	
 	public void enterArea()
 	{
-		Text.printNew("You enter a "+Area.getName()+". "+Area.getDescription()+describeProps());
-	}
-
-	private void describeItems()
-	{
-		
+		Text.printNew("You enter a "+localArea.getName()+". "+localArea.getDescription()+listProps()+listItems());
 	}
 	
-	private String describeProps()
+	private String listProps()
 	{
-		if (!PropMap.isEmpty())
+		if (!propMap.isEmpty())
 		{
-			DescribeProps = " There is";
-			Iterator<String> KeyIterator = PropMap.keySet().iterator();
-			String CurrentIteration;
-			for (int x = 0; x<PropsInArea-1&&KeyIterator.hasNext(); x++)
+			listHolder = " There is";
+			Iterator<Short> KeyIterator = propMap.keySet().iterator();
+			Short CurrentIteration;
+			for (int x = 0; x<propMap.size()-1&&KeyIterator.hasNext(); x++)
 			{
-				CurrentIteration = (String) KeyIterator.next();
-				DescribeProps = DescribeProps+PropMap.get(CurrentIteration).Prop.getArticle()+PropMap.get(CurrentIteration).Prop.getName()+",";
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+propMap.get(CurrentIteration).localProp.getArticle()+propMap.get(CurrentIteration).localProp.getName()+",";
 			}
-			if (PropsInArea == 1)
+			if (propMap.size() == 1)
 			{
-				CurrentIteration = (String) KeyIterator.next();
-				DescribeProps = DescribeProps+PropMap.get(CurrentIteration).Prop.getArticle()+PropMap.get(CurrentIteration).Prop.getName()+".";
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+propMap.get(CurrentIteration).localProp.getArticle()+propMap.get(CurrentIteration).localProp.getName()+".";
 			}
-			else if (PropsInArea>1)
+			else if (propMap.size()>1)
 			{
-				CurrentIteration = (String) KeyIterator.next();
-				DescribeProps = DescribeProps+" and"+PropMap.get(CurrentIteration).Prop.getArticle()+PropMap.get(CurrentIteration).Prop.getName()+".";
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+" and"+propMap.get(CurrentIteration).localProp.getArticle()+propMap.get(CurrentIteration).localProp.getName()+".";
 			}
 			else{}
-			return DescribeProps;
+			return listHolder;
 		}
 		return "";
 	}
 	
+	private String listItems()
+	{
+		if (!itemMap.isEmpty())
+		{
+			listHolder = " Littered across the ground there is";
+			Iterator<Short> KeyIterator = itemMap.keySet().iterator();
+			Short CurrentIteration;
+			for (int x = 0; x<itemMap.size()-1&&KeyIterator.hasNext(); x++)
+			{
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+itemMap.get(CurrentIteration).localItem.getArticle()+itemMap.get(CurrentIteration).localItem.getName()+",";
+			}
+			if (itemMap.size() == 1)
+			{
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+itemMap.get(CurrentIteration).localItem.getArticle()+itemMap.get(CurrentIteration).localItem.getName()+".";
+			}
+			else if (itemMap.size()>1)
+			{
+				CurrentIteration = (Short) KeyIterator.next();
+				listHolder = listHolder+" and"+itemMap.get(CurrentIteration).localItem.getArticle()+itemMap.get(CurrentIteration).localItem.getName()+".";
+			}
+			else{}
+			return listHolder;
+		}
+		return "";
+	}
 }

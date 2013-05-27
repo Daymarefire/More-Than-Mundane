@@ -2,27 +2,15 @@ package com.morethan.mundane;
 
 public enum EnumItem {
 
-	STICK("STK","Stick", 1d, 1d, "");
+	STICK("Stick", " a ");
 	
-	String id;
-	String n;
-	Double v;
-	Double w;
-	String d;
+	private String n;
+	private String a;
 	
-	EnumItem(String ID, String Name, Double Volume, Double Weight, String Description) {
-		
-		id = ID;
-		n = Name;
-		v = Volume;
-		w = Weight;
-		d = Description;
-		
-	}
-	
-	String getID()
+	EnumItem(String name, String article)
 	{
-		return id;
+		n = name;
+		a = article;
 	}
 	
 	String getName()
@@ -30,18 +18,8 @@ public enum EnumItem {
 		return n;
 	}
 	
-	Double getVolume()
+	String getArticle()
 	{
-		return v;
-	}
-	
-	Double getWeight()
-	{
-		return w;
-	}
-	
-	String getDescription()
-	{
-		return d;
+		return a;
 	}
 }

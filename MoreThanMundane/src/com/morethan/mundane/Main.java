@@ -1,11 +1,15 @@
 package com.morethan.mundane;
-//Main
+
 public class Main {
-	
-	public static void main(String[] args) 
-	{
-		Player player = new Player();
-		World world = new World();
+
+	public static UniqueID uniqueId;
+
+	public static void main(String[] args) {
+		
+		uniqueId = new UniqueID();
+		//World world = new World();
+		//Player player = new Player(EnumCreature.PLAYER,0,0);
+		
 	}
 
 }

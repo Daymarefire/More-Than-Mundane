@@ -1,5 +1,5 @@
 package com.morethan.mundane;
 
-public class AreaPropLists {
+public enum EnumContainer {
 
 }

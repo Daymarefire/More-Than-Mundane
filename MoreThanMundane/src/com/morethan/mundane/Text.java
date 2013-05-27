@@ -1,8 +1,6 @@
 package com.morethan.mundane;
 //Handles text input
 public class Text {
-
-	private String ShortString;
 	
 	public static void print(String string)
 	{

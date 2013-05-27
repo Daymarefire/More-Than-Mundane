@@ -2,10 +2,13 @@ package com.morethan.mundane;
 
 public class Item {
 	
-	EnumItem Item;
+	short id;
+	EnumItem localItem;
 	
-	public Item(EnumItem item)
+	public Item (EnumItem importedItem)
 	{
-			Item = item;
+		localItem = importedItem;
+		id = Main.uniqueId.create();
 	}
+	
 }

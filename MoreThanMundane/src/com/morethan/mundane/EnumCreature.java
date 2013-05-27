@@ -2,24 +2,18 @@ package com.morethan.mundane;
 
 public enum EnumCreature {
 
-	OGRE("Ogre", "humanoid");
+	PLAYER("player");
 	
-	private String n;
 	private String t;
 	
-	EnumCreature(String Name, String Type)
+	EnumCreature(String type)
 	{
-		n = Name;
-		t = Type;
-	}
-	
-	String getName()
-	{
-		return n;
+		t = type;
 	}
 	
 	String getType()
 	{
 		return t;
 	}
+
 }
