@@ -1,13 +1,19 @@
 package com.morethan.mundane;
 
-public class Prop {
+public class Prop extends UniqueIDObject{
 	
-	short id;
 	EnumProp localProp;
 	
-	Prop (EnumProp importedProp)
+	public Prop (EnumProp importedProp)
 	{
 		localProp = importedProp;
 		id = Main.uniqueId.create();
+		script = localProp.getScript();
 	}
+	
+	public String getName()
+	{
+		return localProp.getName();
+	}
+	
 }

@@ -1,8 +1,7 @@
 package com.morethan.mundane;
 
-public class Exit {
+public class Exit extends UniqueIDObject{
 	
-	short id;
 	int DestinationX;
 	int DestinationY;
 	AreaMap destinationAreaMap;
@@ -15,6 +14,11 @@ public class Exit {
 		DestinationX = exitDestinationX;
 		DestinationY = exitDestinationY;
 		destinationAreaMap = areaMap;
+	}
+
+	String getName() 
+	{
+		return localExit.getName();
 	}
 
 }

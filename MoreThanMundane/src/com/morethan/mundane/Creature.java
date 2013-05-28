@@ -3,9 +3,9 @@ package com.morethan.mundane;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Creature {
+public class Creature extends UniqueIDObject{
 
-	short id;
+	Area currentArea;
 	String creatureType;
 	EnumCreature localCreature;
 	Map<Short, Item> inventory = new HashMap<Short, Item>();
@@ -16,6 +16,7 @@ public class Creature {
 		{
 			localCreature = importedCreature;
 			id = Main.uniqueId.create();
+			script = localCreature.getScript();
 		}
 		else{}
 	}
@@ -24,5 +25,10 @@ public class Creature {
 	{
 		inventory.put(item.id, item);
 		return true;
+	}
+
+	String getName() 
+	{
+		return localCreature.getType();
 	}
 }

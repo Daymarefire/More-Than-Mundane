@@ -1,14 +1,19 @@
 package com.morethan.mundane;
 
-public class Item {
+public class Item extends UniqueIDObject{
 	
-	short id;
 	EnumItem localItem;
 	
 	public Item (EnumItem importedItem)
 	{
 		localItem = importedItem;
 		id = Main.uniqueId.create();
+		script = localItem.getScript();
+	}
+
+	String getName() 
+	{
+		return localItem.getName();
 	}
 	
 }

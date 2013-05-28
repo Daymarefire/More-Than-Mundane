@@ -2,13 +2,15 @@ package com.morethan.mundane;
 
 public enum EnumCreature {
 
-	PLAYER("player");
+	PLAYER("player", new ScriptGenericCreature());
 	
 	private String t;
+	private Script s;
 	
-	EnumCreature(String type)
+	EnumCreature(String type, Script script)
 	{
 		t = type;
+		s = script;
 	}
 	
 	String getType()
@@ -16,4 +18,8 @@ public enum EnumCreature {
 		return t;
 	}
 
+	Script getScript()
+	{
+		return s;
+	}
 }
